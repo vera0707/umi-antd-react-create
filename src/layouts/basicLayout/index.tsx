@@ -18,7 +18,7 @@ const BasicLayout: React.FC = props => {
         type: 'user/logoutCurrentUser',
         payload: null,
       });
-      router.push('/login');
+      router.push({pathname: '/login'});
       return;
     }
   };

@@ -1,5 +1,6 @@
 import { Effect } from 'dva';
 import { Reducer } from 'redux';
+import { router } from 'umi';
 import { queryCurrentUser } from '@/services/user';
 
 export interface StateType {
@@ -21,12 +22,16 @@ const UserModel: UserModelType = {
     isLogin: false,
   },
   effects: {
-    *queryCurrentUser({ payload }, { call, put }) {
+    *queryCurrentUser({ payload,callback }, { call, put }){
       const response = yield call(queryCurrentUser, payload);
       yield put({
         type: 'saveCurrentUser',
-        payload: response,
+        payload: {
+          ...response,
+          name: payload.username
+        },
       });
+      router.replace({pathname: '/'});
     },
     *logoutCurrentUser({ payload }, { call, put }){
       yield put({
@@ -39,7 +44,7 @@ const UserModel: UserModelType = {
     saveCurrentUser(state, action) {
       return {
         ...state,
-        isLogin: action.payload && action.payload.name,
+        isLogin: action.payload && action.payload.name ? true : false,
         currentUser: action.payload || {},
       };
     },

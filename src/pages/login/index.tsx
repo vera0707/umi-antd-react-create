@@ -1,5 +1,5 @@
 import React,{ useState, useEffect } from 'react';
-import { Button, DatePicker, Form, Input, Checkbox, Icon } from 'antd';
+import { Button, DatePicker, Form, Input, Checkbox, Icon, message } from 'antd';
 import { connect } from 'dva';
 import withRouter from 'umi/withRouter';
 import styles from './index.less';
@@ -7,19 +7,19 @@ import styles from './index.less';
 const LoginComponment: React.FC = props => {
   const { dispatch,form } = props;
   const {getFieldDecorator} = form;
-
-
-  //useEffect(() => {
-  //  if (dispatch) {
-  //    dispatch({
-  //      type: 'user/queryCurrentUser',
-  //      payload: null
-  //    });
-  //  }
-  //}, []);
-
   const handleSubmit = (e)=>{
-
+    e.preventDefault();
+    form.validateFields((err, values) => {
+      if (!err) {
+        const {username,password} = values;
+        if(username != '魏无羡') return message.error('仅容许魏无羡进入');
+        if(password != '随便') return message.error('仅容许携带随便');
+        dispatch({
+          type: 'user/queryCurrentUser',
+          payload: values,
+        });
+      }
+    });
   };
 
 
@@ -31,24 +31,24 @@ const LoginComponment: React.FC = props => {
       <Form onSubmit={handleSubmit} className={styles.loginForm}>
         <Form.Item>
           {getFieldDecorator('username', {
-            rules: [{ required: true, message: '前方來者報上姓名!' }],
+            rules: [{
+              required: true,
+              message: '前方來者報上姓名!' }],
             })(
           <Input
             prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-            placeholder="來者何人"
-          />,
-            )}
+            placeholder="來者何人-魏无羡"
+          />)}
         </Form.Item>
         <Form.Item>
           {getFieldDecorator('password', {
             rules: [{ required: true, message: '前方來者所佩何劍' }],
             })(
           <Input
-            prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+            prefix={<Icon type="lock" autoComplete="on" style={{ color: 'rgba(0,0,0,.25)' }} />}
             type="password"
-            placeholder="所佩何劍"
-          />,
-            )}
+            placeholder="所佩何劍-随便"
+          />)}
         </Form.Item>
         <Form.Item>
           {getFieldDecorator('remember', {
