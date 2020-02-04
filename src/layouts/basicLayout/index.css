@@ -1,0 +1,28 @@
+.container{
+  width: 100%;
+  min-width: 750px;
+  margin: 0 auto;
+}
+.header{
+  width: 100%;
+  height: 64px;
+  padding: 0;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0,21,41,.08);
+}
+.headerCon{
+  display: flex;
+  height: 100%;
+  margin: 0 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+.headerTitle{
+  color: #2c3e50;
+  font-size: 24px;
+}
+.username{
+  font-size: 14px;
+  color: rgba(0,0,0,.65);
+  margin-left: 5px;
+}

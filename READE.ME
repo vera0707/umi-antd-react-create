@@ -1,0 +1,48 @@
+## 陈情令之问灵版项目搭建
+
+#### 项目介绍
+
+- 基于umi脚手架搭建的React SPA APP
+- 语法支持Typescript/Less
+- UI组件基于Antd+主题定制
+- 数据请求基于Dva
+- 简易采用Hook编写项目
+
+#### 启动项目
+
+- 下载依赖 `npm install`
+- 启动开发模式 `npm start` or `npm run start`
+- 启动打包模式 `npm run build`
+
+#### 文件介绍
+
+- config
+    * config.js  -> umi默认读取的配置文件
+    * router.config  -> 路由配置文件 后期做动态路由配置
+- mock    -> 本地假数据
+- src
+    * assets   -> 静态资源文件
+    * layouts  -> 页面布局文件
+    * pages    -> 页面文件
+    * models   -> 数据models层配置
+    * services -> 请求地址
+    * utils    -> 公用方法
+
+#### 参考文档
+
+- [React Hook介绍](https://react.docschina.org/docs/hooks-intro.html)
+- [Dva官方文档](https://dvajs.com/guide/concepts.html#state)
+- [umi配置文档](https://umijs.org/zh/config/)
+
+
+#### 异步请求相关
+
+- 如有跨域问题,请求config/config中配置proxy
+- src/services中存放请求地址
+- src/models中处理请求逻辑
+- view中,通过挂载在props.dispatch方法调用请求
+
+
+
+
+
