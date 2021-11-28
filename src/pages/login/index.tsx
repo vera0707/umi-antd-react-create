@@ -13,8 +13,8 @@ const LoginComponment: React.FC = props => {
     form.validateFields((err, values) => {
       if (!err) {
         const {username,password} = values;
-        if(username != '魏无羡') return message.error('仅容许魏无羡进入');
-        if(password != '随便') return message.error('仅容许携带随便');
+        if(username != 'admin') return message.error('未记录在册不得造次');
+        if(password != 'admin') return message.error('宵小之辈不能擅入');
         dispatch({
           type: 'user/queryCurrentUser',
           payload: values,
@@ -28,29 +28,29 @@ const LoginComponment: React.FC = props => {
     <>
       <img src={loginBg} className={styles.loginBg} alt=""/>
       <div className={styles.login}>
-        <div className={styles.title}>問靈十三載 尋一不歸人</div>
-        <div className={styles.titleNote}>夷陵老祖何在</div>
+        <div className={styles.title}>来人通报 闲人免入</div>
+        <div className={styles.titleNote}>天官赐福 百无禁忌</div>
 
         <Form onSubmit={handleSubmit} className={styles.loginForm}>
           <Form.Item>
             {getFieldDecorator('username', {
               rules: [{
                 required: true,
-                message: '前方來者報上姓名!' }],
+                message: '前方來者報上名号!' }],
               })(
             <Input
               prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-              placeholder="來者何人-魏无羡"
+              placeholder="來者何人-admin"
             />)}
           </Form.Item>
           <Form.Item>
             {getFieldDecorator('password', {
-              rules: [{ required: true, message: '前方來者所佩何劍' }],
+              rules: [{ required: true, message: '前方来人报上暗语' }],
               })(
             <Input
               prefix={<Icon type="lock" autoComplete="on" style={{ color: 'rgba(0,0,0,.25)' }} />}
               type="password"
-              placeholder="所佩何劍-随便"
+              placeholder="暗号何为-admin"
             />)}
           </Form.Item>
           <Form.Item>
@@ -63,7 +63,7 @@ const LoginComponment: React.FC = props => {
             </a>
             <div>
               <Button type="primary" htmlType="submit" className="login-form-button">
-                遁鬼门
+                登录
               </Button>
             </div>
             Or <a href="">register now!</a>

@@ -7,6 +7,7 @@ import {Button,Popconfirm,Dropdown,Menu,Icon} from 'antd';
 import styles from './index.css';
 import { router } from 'umi';
 
+const { SubMenu } = Menu;
 
 const BasicLayout: React.FC = props => {
   const  {dispatch,currentUser,isLogin} = props;
@@ -42,8 +43,11 @@ const BasicLayout: React.FC = props => {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
+        <div >
+          
+        </div>
         <div className={styles.headerCon}>
-          <div className={styles.headerTitle}>問靈十三載</div>
+          <div className={styles.headerTitle}>【先登录】</div>
           { isLogin ? <Dropdown overlay={userMenu}>
             <span>
               <img src={currentUser.avatar} alt="" width="20"/>
@@ -52,7 +56,7 @@ const BasicLayout: React.FC = props => {
           </Dropdown>
             :
             <Button onClick={()=>router.push('/login')}>登录</Button>
-            }
+          }
         </div>
       </div>
       <div>{props.children}</div>

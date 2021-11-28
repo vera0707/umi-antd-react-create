@@ -10,13 +10,13 @@ import styles from './index.less';
 const { TabPane } = Tabs;
 
 const LoginComponment: React.FC = props => {
-  const {isLogin} = props;
+  const { isLogin } = props;
 
   if(!isLogin) return (
     <div className={styles.container + ' ' + styles.welcome}>
       <img src={welcomeSvg} className={styles.bg} alt="logo" />
       <div className={styles.title}>歡迎</div>
-      <div className={styles.note}>問靈/縛靈/祭靈/喚靈/攝靈</div>
+      <div className={styles.note}>这里是自动运维最高机密中心</div>
     </div>
   );
 
